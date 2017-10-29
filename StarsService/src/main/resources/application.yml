@@ -1,0 +1,20 @@
+# Gives a list of stars for each profile
+---
+spring:
+  profiles: alpha
+stars: Altair, Capella, Arcturus, Sirius, Deneb
+  
+---
+spring:
+  profiles: beta
+stars: Mirach, Mirzam, Rastaban, Albireo, Cursa
+
+---
+spring:
+  profiles: gamma
+stars: Eltanin, Almeisan, Zaurak, Sadr, Gacrux
+
+---
+spring:
+  profiles: delta
+stars: Algorab, Ruchbah, Wezen, Prijipati, Skat

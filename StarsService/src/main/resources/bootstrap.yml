@@ -1,0 +1,25 @@
+# The app register with Eureka with a name depending
+# on the profile (i.e. given at startup as a VM argument).
+---
+spring:
+  profiles: alpha
+  application:
+    name: alpha-stars-service
+    
+---
+spring:
+  profiles: beta
+  application:
+    name: beta-stars-service
+  
+---
+spring:
+  profiles: gamma
+  application:
+    name: gamma-stars-service
+
+---
+spring:
+  profiles: delta
+  application:
+    name: delta-stars-service
