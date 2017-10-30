@@ -12,7 +12,7 @@ public class StarsController {
 
 	private static final Logger logger = Logger.getLogger(StarsController.class);
 	
-	@Value("${stars}")
+	@Value("${stars: no star name}")
 	private String stars;
 	
 	@GetMapping("/")
