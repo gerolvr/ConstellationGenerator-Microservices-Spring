@@ -34,13 +34,13 @@ public class ConstellationController {
 
 		LOG.log(Level.INFO, "Called getConstellation");
 		String alphaStar = starsService.getStar("alpha-stars-service");
-		String betaStar = starsService.getStar("beta-stars-service");
-		String gammaStar = starsService.getStar("gamma-stars-service");
+//		String betaStar = starsService.getStar("beta-stars-service");
+//		String gammaStar = starsService.getStar("gamma-stars-service");
 		String deltaStar = starsService.getDeltaStarFeign();
 		LinkedHashMap<String, String> stars = new LinkedHashMap<>();
 		stars.put("Alpha star: ", alphaStar);
-		stars.put("Beta star: ", betaStar);
-		stars.put("Gamma star: ", gammaStar);
+//		stars.put("Beta star: ", betaStar);
+//		stars.put("Gamma star: ", gammaStar);
 		stars.put("Delta star: ", deltaStar);
 		Constellation constellation = new Constellation("Constellation", stars);
 		return constellation;
