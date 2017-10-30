@@ -19,7 +19,7 @@ public class StarsServiceImpl implements StarsService {
 	 * Use the restTemplate with the Ribbon client-side load balancing.
 	 */
 	@Override
-	@HystrixCommand(fallbackMethod = "startServiceNotFound")
+	@HystrixCommand(fallbackMethod = "starsServiceNotFound")
 	public String getStar(String serviceName) {
 		return rest.getForObject("http://" + serviceName, String.class);
 	}
@@ -32,17 +32,22 @@ public class StarsServiceImpl implements StarsService {
 	 * @HystrixCommand(fallbackMethod = "startServiceNotFound")
 	 * @return
 	 */
+	@HystrixCommand(fallbackMethod = "starsServiceNotFoundFeign")
 	public String getDeltaStarFeign() {
 		return deltaStarsFeignService.getStar();
 	}
 
 	/**
-	 * Fallback method for Hystrix
+	 * Fallback methods for Hystrix
 	 * @param service
 	 * @return
 	 */
-	public String startServiceNotFound(String service) {
-		return "Blackhole";
+	public String starsServiceNotFound(String service) {
+		return "Blackhole from " + service;
+	}
+	
+	public String starsServiceNotFoundFeign() {
+		return "Feign fallback Blackhole";
 	}
 
 }
