@@ -29,6 +29,10 @@ public class ConstellationController {
 		return new RestTemplateBuilder().build();
 	}
 	
+	/**
+	 * To try with more stars service, uncomment the required lines and start services
+	 * with the appropriate names
+	 */
 	@GetMapping("/")
 	public Constellation getConstellation() {
 
