@@ -1,13 +1,15 @@
 **Table of Contents**
 
-[TOCM]
-
-[TOC]
-
 # Table of Content
-* [Eureka service discovery](#Eureka-service-discovery)
-
-## <a name="Eureka-service-discovery"></a>Eureka service discovery
+* [Eureka service discovery](#eureka-service-discovery)
+* [Tracing with Zipkin](#tracing-with-zipkin)
+  * [Microservices dependencies](#microservices-dependencies)
+  * [Checking the behavior of the Ribbon client-side load balancing](#checking-the-behavior-of-the-ribbon-client-side-load-balancing)
+* [Hystrix](#hystrix)
+  * [Hystrix Dashboard](#hystrix-dashboard)
+  
+  
+## Eureka service discovery
 
 The following microservices instances are up and running:
 ![Eureka](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/eureka.png "Eureka")
@@ -21,7 +23,7 @@ It shows the dependencies between microservices. In this demo it is simple but i
 ![Dependies](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/dependencies1.png "Dependies")
 ![Dependies2](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/dependencies2.png "Dependies2")
 
-### Checking the behavior of the Ribbon client-side load balancing.
+### Checking the behavior of the Ribbon client-side load balancing
 
 Ribbon is used by the [RestTemplate in the Constellation Gemerator microservice](https://github.com/gerolvr/ConstellationGenerator-Microservices-Spring/blob/7c6e99f06d89dfe5a060ac16545ba0895011ea7b/ConstellationClientServiceHystrixBreaker/src/main/java/com/gerolivo/constellationgenerator/services/StarsServiceImpl.java#L43 "RestTemplate") which is annotated with [@LoadBalanced](https://github.com/gerolvr/ConstellationGenerator-Microservices-Spring/blob/7c6e99f06d89dfe5a060ac16545ba0895011ea7b/ConstellationClientServiceHystrixBreaker/src/main/java/com/gerolivo/constellationgenerator/services/StarsServiceImpl.java#L16 "@LoadBalanced")
 
@@ -42,11 +44,11 @@ In our case, the load balancing is supposed to happen between the constellation 
 
 6. Notice the first request went on the alpha-stars-service instance 192.168.2.100:**9300**:
 ![Zipkin](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/zipkin4.png "Zipkin")
-The second request went on the instance 192.168.2.100:**9301**
+> The second request went on the instance 192.168.2.100:**9301**
 ![Zipkin](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/zipkin5.png "Zipkin")
-The third request went on the instance 192.168.2.100:**9300**
+> The third request went on the instance 192.168.2.100:**9300**
 ![Zipkin](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/zipkin6.png "Zipkin")
-The fourth request went on the instance 192.168.2.100:**9301**
+> The fourth request went on the instance 192.168.2.100:**9301**
 ![Zipkin](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/zipkin7.png "Zipkin")
 
 So Ribbon alternated the requests on each available instance of alpha-stars-service: 192.168.2.100:**9300**, 192.168.2.100:**9301**, 192.168.2.100:**9300**, 192.168.2.100:**9301**
