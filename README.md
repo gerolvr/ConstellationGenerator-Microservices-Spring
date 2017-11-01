@@ -1,5 +1,3 @@
-**Table of Contents**
-
 # Table of Content
 * [Eureka service discovery](#eureka-service-discovery)
 * [Tracing with Zipkin](#tracing-with-zipkin)
@@ -44,11 +42,14 @@ In our case, the load balancing is supposed to happen between the constellation 
 
 6. Notice the first request went on the alpha-stars-service instance 192.168.2.100:**9300**:
 ![Zipkin](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/zipkin4.png "Zipkin")
-> The second request went on the instance 192.168.2.100:**9301**
+
+* The second request went on the instance 192.168.2.100:**9301**
 ![Zipkin](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/zipkin5.png "Zipkin")
-> The third request went on the instance 192.168.2.100:**9300**
+
+* The third request went on the instance 192.168.2.100:**9300**
 ![Zipkin](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/zipkin6.png "Zipkin")
-> The fourth request went on the instance 192.168.2.100:**9301**
+
+* The fourth request went on the instance 192.168.2.100:**9301**
 ![Zipkin](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/zipkin7.png "Zipkin")
 
 So Ribbon alternated the requests on each available instance of alpha-stars-service: 192.168.2.100:**9300**, 192.168.2.100:**9301**, 192.168.2.100:**9300**, 192.168.2.100:**9301**
