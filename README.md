@@ -1,12 +1,30 @@
 # Table of Content
+* [Architecture](#architecture)
 * [Eureka service discovery](#eureka-service-discovery)
 * [Tracing with Zipkin](#tracing-with-zipkin)
   * [Microservices dependencies](#microservices-dependencies)
   * [Checking the behavior of the Ribbon client-side load balancing](#checking-the-behavior-of-the-ribbon-client-side-load-balancing)
 * [Hystrix](#hystrix)
   * [Hystrix Dashboard](#hystrix-dashboard)
-  
-  
+
+## Architecture
+![Architecture](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/microservicesArchitecture.png "Architecture")
+
+Celestial constellations are formed by several stars ranked by their order of apparent magnitude: starting from an alpha star (the brightest), then beta, gamma, delta, etc.
+
+In this demo, when a user/client makes a request on the Constellation Generator microservice, it fetches stars name from stars generator microservices. They simply return a random star name from a list.
+The user finally receive a random constellation.
+
+Many Constellation Generator and stars generator microservices can run simultaneously.
+
+
+* The Eureka server provides microservices registration and discovery.
+* The Zuul proxy routes and sends requests.
+* Hystrix provides circuit breaking capabilities.
+* Rest clients with Feign (declarative) and Ribbon using load balancing.
+* Sleuth and Zipkin provide request tracing.
+
+
 ## Eureka service discovery
 
 The following microservices instances are up and running:
