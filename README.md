@@ -6,6 +6,7 @@
   * [Checking the behavior of the Ribbon client-side load balancing](#checking-the-behavior-of-the-ribbon-client-side-load-balancing)
 * [Hystrix](#hystrix)
   * [Hystrix Dashboard](#hystrix-dashboard)
+* [Docker, Docker Compose](#docker-docker-compose)
 
 ## Architecture
 ![Architecture](https://raw.githubusercontent.com/gerolvr/ConstellationGenerator-Microservices-Spring/master/pictures/microservicesArchitecture.png "Architecture")
@@ -116,3 +117,7 @@ With the default settings the circuit closes only if there are 20 failures withi
 The settings in the [application.properties](https://github.com/gerolvr/ConstellationGenerator-Microservices-Spring/blob/7c6e99f06d89dfe5a060ac16545ba0895011ea7b/ConstellationClientServiceHystrixBreaker/src/main/resources/application.properties#L19 "application.properties") are
 hystrix.command.default.metrics.rollingStats.timeInMilliseconds=5000
 hystrix.command.default.circuitBreaker.requestVolumeThreshold=1
+
+## Docker, Docker Compose
+
+Each service has a dockerfile to build an image as well as a docker-compose.yml to start all the services together.
