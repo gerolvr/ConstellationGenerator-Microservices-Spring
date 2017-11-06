@@ -1,0 +1,56 @@
+version: '2.1'
+
+services:
+  eureka:
+    image: gerolvr/eurekacontainer
+    restart: always
+    network_mode: host
+    ports:
+      - "8761:8761"
+
+  zipkin:
+    image: gerolvr/zipkincontainer
+    restart: always
+    network_mode: host
+    ports:
+      - "9411:9411"
+
+  zuul:
+    image: gerolvr/zuulcontainer
+    network_mode: host
+    ports:
+      - "9000:9000"
+
+  starsservicealpha1:
+    image: gerolvr/starsservicecontainer
+    network_mode: host
+    ports:
+      - "9300:9300"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=alpha"
+      - "SERVER_PORT=9300"
+
+  starsservicealpha2:
+    image: gerolvr/starsservicecontainer
+    network_mode: host
+    ports:
+      - "9301:9301"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=alpha"
+      - "SERVER_PORT=9301"
+
+  starsservicedelta:
+    image: gerolvr/starsservicecontainer
+    network_mode: host
+    ports:
+      - "9302:9302"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=delta"
+      - "SERVER_PORT=9302"
+
+  constellationhystrix:
+    image: gerolvr/constellationhystrixcontainer
+    #restart: always
+    network_mode: host
+    ports:
+      - "9200:9200"

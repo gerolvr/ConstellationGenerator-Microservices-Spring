@@ -1,0 +1,6 @@
+FROM java:8
+VOLUME /tmp
+ADD target/StarsService-0.0.1-SNAPSHOT.jar starsservice.jar
+EXPOSE 9300
+RUN bash -c 'touch /starsservice.jar'
+ENTRYPOINT ["java", "-Xmx64m", "-Djava.security.egd=file:/dev/./urandom","-jar","/starsservice.jar"]

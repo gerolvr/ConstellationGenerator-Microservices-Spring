@@ -1,0 +1,6 @@
+FROM java:8
+VOLUME /tmp
+ADD target/ConstellationClientService-0.0.1-SNAPSHOT.jar ccs.jar
+EXPOSE 9200
+RUN bash -c 'touch /ccs.jar'
+ENTRYPOINT ["java", "-Xmx64m", "-Djava.security.egd=file:/dev/./urandom","-jar","/ccs.jar"]

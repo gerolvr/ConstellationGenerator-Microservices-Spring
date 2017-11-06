@@ -1,0 +1,6 @@
+FROM java:8
+VOLUME /tmp
+ADD target/ConstellationClientServiceHystrixBreaker-0.0.1-SNAPSHOT.jar ccshystrix.jar
+EXPOSE 9201
+RUN bash -c 'touch /ccshystrix.jar'
+ENTRYPOINT ["java", "-Xmx96m", "-Djava.security.egd=file:/dev/./urandom","-jar","/ccshystrix.jar"]

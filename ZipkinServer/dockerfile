@@ -1,0 +1,6 @@
+FROM java:8
+VOLUME /tmp
+ADD target/ZipkinServer-0.0.1-SNAPSHOT.jar zipkin.jar
+EXPOSE 9411
+RUN bash -c 'touch /zipkin.jar'
+ENTRYPOINT ["java", "-Xmx80m", "-Djava.security.egd=file:/dev/./urandom","-jar","/zipkin.jar"]
